@@ -7,22 +7,29 @@ import psutil
 from termcolor import colored
 import time
 
+# CMD windows options
 os.system('mode 45, 15')
 os.system('color')
+
+# for Windows10 some text output will be colorised.
 winver = str(sys.getwindowsversion())
 winver10 = 'major=10'
-def vihodi():  # Starting point
+
+# Change here to your subnet
+subnet = '192.168.1.'
+
+def start():  # Starting point
     global winver, winver10
-    os.system('cls') # Function "vihodi()" will be calling very often so its need to clear all text under to start again. UI design!
+    os.system('cls') # Function "start()" will be calling very often so its need to clear all text under to start again. Beautiful!
     choice = False
     while not choice:
         try:
             if winver10 in winver:
-                ip = int(input("IP-adress: "+colored("192.168.1.", 'red')))
+                ip = int(input("IP-adress: "+colored(subnet, 'red')))
             else:
-                ip = int(input("IP-adress: 192.168.1."))
+                ip = int(input("IP-adress: "+subnet))
             if ip >= 1 and ip <= 255:
-                full_ip = '192.168.1.'+str(ip) # Host's IP-address. Thats what we needed from user input.
+                full_ip = subnet+str(ip) # Host's IP-address. Thats what we needed from user's input.
                 checking(full_ip)
             else:
                 choice = False
@@ -130,6 +137,6 @@ def exiting_count():
         else:
             print('Exiting to the main menu in %d' %i+' sec')
         time.sleep(0.5)
-    vihodi()
+    start()
 
-vihodi()
+start()
