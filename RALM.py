@@ -25,9 +25,9 @@ def start():  # Starting point
     while not choice:
         try:
             if winver10 in winver:
-                ip = int(input("IP-adress: "+colored(subnet, 'red')))
+                ip = int(input("IP-address: "+colored(subnet, 'red')))
             else:
-                ip = int(input("IP-adress: "+subnet))
+                ip = int(input("IP-address: "+subnet))
             if ip >= 1 and ip <= 255:
                 full_ip = subnet+str(ip) # Host's IP-address. Thats what we needed from user's input.
                 checking(full_ip)
@@ -40,26 +40,26 @@ def checking(ipaddr):
     global winver, winver10
     os.system('cls')
     # First string in output will be host response (by ICMP ping).
-    print(colored('IP-adress: ','green')+ipaddr)
+    print(colored('IP-address: ','green')+ipaddr)
     print('Status:')
     response = ping(ipaddr)
     if response == None: # If user is not responding => exit to starting point
         if winver10 in winver:
             os.system('cls')
-            print(colored('IP-adress: ','green')+ipaddr)
+            print(colored('IP-address: ','green')+ipaddr)
             print('Status: ' + colored('OFFLINE', 'red'))
             time.sleep(3)
             exiting_count()
         else:
             os.system('cls')
-            print('IP-adress: ' + ipaddr)
+            print('IP-address: ' + ipaddr)
             print(ipaddr+' - ' + 'OFFLINE')
             time.sleep(2)
             exiting_count()
     else: #Okay. Host is online. Lets type it to user
         os.system('cls')
         if winver10 in winver:
-            print(colored('IP-adress: ','green')+ipaddr)
+            print(colored('IP-address: ','green')+ipaddr)
             print('Status:' + colored(' ONLINE', 'green'))
         else:
             print("Status: ONLINE")
